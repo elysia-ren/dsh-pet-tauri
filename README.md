@@ -31,16 +31,6 @@
 - 设置页：DeepSeek / OpenAI / Ollama 一键预设、API Key 本机 DPAPI 加密、桌宠尺寸/位置/置顶/自启、弹性物理参数、记忆查看/导出/清空、打开数据文件夹
 - 本地 LLM：任意 OpenAI 兼容端点，Ollama 可不填 Key
 
-## 截图
-
-![右键动作菜单](screenshots/menu-anims2.png)
-
-![对话](screenshots/chat-new.png)
-
-![余额气泡](screenshots/balance-new.png)
-
-![中文安装向导](screenshots/installer-020-welcome.png)
-
 ## 使用
 
 1. 运行安装包或免安装 exe。

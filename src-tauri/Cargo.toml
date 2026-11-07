@@ -1,0 +1,26 @@
+[package]
+name = "dsh-pet-tauri"
+version = "0.1.0"
+description = "dsh-pet standalone desktop shell (Tauri P0)"
+edition = "2021"
+rust-version = "1.77"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png", "protocol-asset"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+json5 = "0.4"
+reqwest = { version = "0.12", features = ["json"] }
+tauri-plugin-notification = "2"
+winreg = "0.52"
+base64 = "0.22"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

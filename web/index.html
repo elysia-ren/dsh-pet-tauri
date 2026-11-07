@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dsh-pet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="bubble" class="hidden">
+      <img id="bubble-img" class="hidden" alt="" />
+      <span id="bubble-text"></span>
+    </div>
+
+    <div id="menu" class="hidden"></div>
+    <div id="menu-groups" class="menu-panel hidden"></div>
+    <div id="menu-anims" class="menu-panel hidden"></div>
+
+    <div id="chat" class="hidden">
+      <div class="chat-head">
+        <span>与 <b id="chat-name">桌宠</b> 对话</span>
+        <button id="chat-close" title="关闭">×</button>
+      </div>
+      <div id="chat-log"></div>
+      <form id="chat-form">
+        <input id="chat-input" autocomplete="off" placeholder="说点什么…（回车发送）" />
+        <button type="submit">发送</button>
+      </form>
+    </div>
+
+    <div id="fx"></div>
+
+    <div id="stage" aria-label="desktop pet">
+      <video id="va" class="layer" muted playsinline preload="auto" disablepictureinpicture></video>
+      <video id="vb" class="layer" muted playsinline preload="auto" disablepictureinpicture></video>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

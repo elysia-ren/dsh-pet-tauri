@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dsh-pet 设置</title>
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <header>
+      <h1>dsh-pet 设置</h1>
+      <div class="sub">独立桌宠 · 不依赖 DeepSeek Harness</div>
+    </header>
+
+    <main>
+      <section>
+        <h2>AI 模型（OpenAI 兼容）</h2>
+        <div class="row">
+          <label>接口地址</label>
+          <input id="base_url" placeholder="https://api.deepseek.com" />
+        </div>
+        <div class="row">
+          <label>模型</label>
+          <input id="model" placeholder="deepseek-chat" />
+        </div>
+        <div class="row">
+          <label>温度</label>
+          <input id="temperature" type="number" min="0" max="2" step="0.1" />
+        </div>
+        <div class="row">
+          <label>API Key</label>
+          <input id="api_key" type="password" placeholder="sk-…" autocomplete="off" />
+          <button id="save_key" class="btn">保存 Key</button>
+          <button id="import_key" class="btn">从 DSH 导入</button>
+          <button id="clear_key" class="btn danger">清除</button>
+        </div>
+        <div class="row">
+          <label></label>
+          <button class="btn preset" data-base="https://api.deepseek.com" data-model="deepseek-chat">DeepSeek</button>
+          <button class="btn preset" data-base="https://api.openai.com/v1" data-model="gpt-4o-mini">OpenAI</button>
+          <button class="btn preset" data-base="http://127.0.0.1:11434/v1" data-model="qwen2.5:7b">Ollama</button>
+          <span class="hint">一键填入常用端点</span>
+        </div>
+        <div class="row">
+          <label></label>
+          <span class="hint" id="key_status">未设置</span>
+        </div>
+        <div class="row">
+          <label></label>
+          <button id="test_llm" class="btn">测试连接</button>
+          <span class="hint" id="test_status"></span>
+        </div>
+        <p class="note">
+          DeepSeek 官方：接口地址 https://api.deepseek.com，模型 deepseek-chat；OpenAI 兼容端点填到
+          /v1 为止即可；本地 Ollama 填 http://127.0.0.1:11434/v1（Key 可留空，模型如 qwen2.5:7b）。
+          Key 用 Windows DPAPI 加密后保存在本机设置文件里。
+        </p>
+      </section>
+
+      <section>
+        <h2>桌宠</h2>
+        <div class="row">
+          <label>名字</label>
+          <input id="pet_name" />
+        </div>
+        <div class="row">
+          <label>大小（宽 px）</label>
+          <input id="pet_size" type="number" min="200" max="900" step="10" />
+        </div>
+        <div class="row">
+          <label>停靠</label>
+          <select id="corner">
+            <option value="top-right">右上</option>
+            <option value="top-left">左上</option>
+            <option value="bottom-right">右下</option>
+            <option value="bottom-left">左下</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>边距 X / Y</label>
+          <input id="margin_x" type="number" class="short" />
+          <input id="margin_y" type="number" class="short" />
+        </div>
+        <div class="row">
+          <label>置顶</label>
+          <input id="always_on_top" type="checkbox" class="check" />
+          <span class="hint">关闭后会被其它窗口盖住</span>
+        </div>
+        <div class="row">
+          <label>开机自启</label>
+          <input id="autostart" type="checkbox" class="check" />
+          <span class="hint">写入 HKCU Run（设置页保存后生效）</span>
+        </div>
+        <div class="row">
+          <label>位置</label>
+          <button id="reset_position" class="btn">重置位置</button>
+          <span class="hint">清除拖动记忆，回到上面的停靠位</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>事件</h2>
+        <div class="row">
+          <label>余额</label>
+          <input id="balance_enabled" type="checkbox" class="check" />
+          <span class="hint">每</span>
+          <input id="balance_interval_sec" type="number" min="60" class="short" />
+          <span class="hint">秒刷新</span>
+        </div>
+        <div class="row">
+          <label>余额基准（¥）</label>
+          <input id="balance_full" type="number" min="1" step="1" class="short" />
+          <span class="hint">余额 ≥ 基准算满额；DeepSeek 官方口径 20</span>
+        </div>
+        <div class="row">
+          <label>碎碎念</label>
+          <input id="whisper_enabled" type="checkbox" class="check" />
+          <span class="hint">每</span>
+          <input id="whisper_interval_sec" type="number" min="30" class="short" />
+          <span class="hint">秒说一句</span>
+        </div>
+        <div class="row top">
+          <label>人设提示词</label>
+          <textarea id="whisper_prompt" rows="5"></textarea>
+        </div>
+        <div class="row">
+          <label>配图</label>
+          <input id="whisper_image_enabled" type="checkbox" class="check" />
+          <span class="hint">碎碎念随机配图</span>
+          <input id="chat_image_enabled" type="checkbox" class="check" />
+          <span class="hint">对话让模型选图</span>
+        </div>
+        <div class="row">
+          <label>系统通知</label>
+          <input id="notifications_enabled" type="checkbox" class="check" />
+          <span class="hint">窗口没聚焦时，回复会弹 Windows 通知</span>
+        </div>
+        <div class="row">
+          <label>表情包池</label>
+          <span class="hint" id="meme_count">0 张</span>
+        </div>
+        <div class="row">
+          <label>对话记忆轮数</label>
+          <input id="chat_memory_rounds" type="number" min="0" max="50" class="short" />
+          <span class="hint">每次对话带最近 N 轮进上下文（全量记忆仍保存）</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>弹性 / 物理</h2>
+        <div class="row">
+          <label>重力</label>
+          <input id="ph_gravity" type="number" class="short" step="50" />
+          <span class="hint">px/s²（越大掉得越快）</span>
+        </div>
+        <div class="row">
+          <label>弹性</label>
+          <input id="ph_restitution" type="number" class="short" min="0" max="1" step="0.05" />
+          <span class="hint">碰边后保留的速度比例（0=不弹，1=完全弹）</span>
+        </div>
+        <div class="row">
+          <label>地面摩擦</label>
+          <input id="ph_friction" type="number" class="short" min="0" step="0.5" />
+          <span class="hint">越大落地滑得越近</span>
+        </div>
+        <div class="row">
+          <label>抛掷力度</label>
+          <input id="ph_power" type="number" class="short" min="0" max="3" step="0.1" />
+          <span class="hint">越小越「轻轻一碰不会飞太远」</span>
+        </div>
+        <div class="row">
+          <label>碰撞边界</label>
+          <select id="ph_boundary">
+            <option value="screen">整块屏幕（含任务栏区域，能贴到最上/最下）</option>
+            <option value="work">工作区（避开任务栏）</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>顶部反弹</label>
+          <input id="ph_ceiling" type="checkbox" class="check" />
+          <span class="hint">关闭后撞到屏幕上沿不反弹</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>对话记忆</h2>
+        <div class="row">
+          <label>条数</label>
+          <span id="memory_count" class="hint">0</span>
+          <button id="show_memory" class="btn">查看最近</button>
+          <button id="export_memory" class="btn">导出记忆</button>
+          <button id="clear_memory" class="btn danger">清空记忆</button>
+        </div>
+        <div class="row"><span class="path" id="export_path"></span></div>
+        <pre id="memory_preview" class="hidden"></pre>
+      </section>
+
+      <section>
+        <h2>其它</h2>
+        <div class="row">
+          <label></label>
+          <button id="import_dsh" class="btn">从 DSH 配置导入</button>
+          <button id="open_dir" class="btn">打开数据文件夹</button>
+          <span class="hint">读取 $DSH_HOME/dsh-pet/main-config.jsonc（只读）</span>
+        </div>
+        <div class="row"><label>设置文件</label><span class="path" id="settings_path"></span></div>
+        <div class="row"><label>自定义素材</label><span class="hint" id="custom_assets">0 段动画 / 0 张表情</span></div>
+        <div class="row"><label>记忆文件</label><span class="path" id="memory_path"></span></div>
+        <div class="row"><label>版本</label><span class="hint" id="version"></span></div>
+      </section>
+    </main>
+
+    <footer>
+      <span id="save_status" class="hint"></span>
+      <button id="close" class="btn">关闭</button>
+      <button id="save" class="btn primary">保存</button>
+    </footer>
+
+    <script src="settings.js"></script>
+  </body>
+</html>

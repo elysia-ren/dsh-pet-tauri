@@ -14,6 +14,15 @@
 把 dsh-pet 从 DSH 插件里「提出来」的独立桌面应用：**不打开 DeepSeek Harness**，双击就能养一只透明置顶的桌宠。
 动画、点击 Q 弹、拖拽、右键菜单、余额、碎碎念、对话、记忆、设置页都已经接上；LLM 直连任意 OpenAI 兼容端点（DeepSeek / OpenAI / 本地 Ollama）。
 
+## 下载 / Releases
+
+- GitHub Releases：https://github.com/elysia-ren/dsh-pet-tauri/releases
+- 安装包：`dsh-pet_0.2.0_x64-setup.exe`（中文 NSIS 向导）
+- 免安装版：`dsh-pet-tauri.exe`
+
+> 再次强调：**这是第三方 Tauri 打包，不是 dsh-pet 官方项目**；原项目是
+> [PC2005-cloud/dsh-pet](https://github.com/PC2005-cloud/dsh-pet)（MIT）。
+
 ## 功能
 
 - **桌宠**：透明、无边框、置顶、跳过任务栏；VP9-alpha 视频透明播放；**同步 dsh-pet 0.4.5，114 段动画全量内嵌**

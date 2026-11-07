@@ -13,7 +13,7 @@
 ## 下载
 
 - **Releases：** https://github.com/elysia-ren/dsh-pet-tauri/releases
-- **安装包：** `dsh-pet_0.2.0_x64-setup.exe`（中文 NSIS 向导，可选安装目录）
+- **安装包：** `dsh-pet_0.2.1_x64-setup.exe`（中文 NSIS 向导，可选安装目录）
 - **免安装版：** `dsh-pet-tauri.exe`
 
 运行环境：Windows 10/11 + WebView2 Runtime（Windows 11 自带；Windows 10 通常随 Edge 已安装）。
@@ -38,7 +38,7 @@
 1. 运行安装包或免安装 exe。
 2. 右键宠物 → **设置…**。
 3. 填写 AI 模型（任选其一）：
-   - **DeepSeek**：`https://api.deepseek.com`，模型 `deepseek-chat`，填 API Key
+   - **DeepSeek**：`https://api.deepseek.com`，模型 `deepseek-flash`（或 `deepseek-v4-pro`），填 API Key
    - **OpenAI**：`https://api.openai.com/v1`，填模型名和 Key
    - **Ollama**：`http://127.0.0.1:11434/v1`，模型如 `qwen2.5:7b`，Key 可留空
 4. **保存 Key → 测试连接 → 保存**。

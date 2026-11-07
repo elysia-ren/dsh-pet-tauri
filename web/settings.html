@@ -21,7 +21,7 @@
         </div>
         <div class="row">
           <label>模型</label>
-          <input id="model" placeholder="deepseek-chat" />
+          <input id="model" placeholder="deepseek-flash" />
         </div>
         <div class="row">
           <label>温度</label>
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
           <label></label>
-          <button class="btn preset" data-base="https://api.deepseek.com" data-model="deepseek-chat">DeepSeek</button>
+          <button class="btn preset" data-base="https://api.deepseek.com" data-model="deepseek-flash">DeepSeek</button>
           <button class="btn preset" data-base="https://api.openai.com/v1" data-model="gpt-4o-mini">OpenAI</button>
           <button class="btn preset" data-base="http://127.0.0.1:11434/v1" data-model="qwen2.5:7b">Ollama</button>
           <span class="hint">一键填入常用端点</span>
@@ -51,7 +51,7 @@
           <span class="hint" id="test_status"></span>
         </div>
         <p class="note">
-          DeepSeek 官方：接口地址 https://api.deepseek.com，模型 deepseek-chat；OpenAI 兼容端点填到
+          DeepSeek 官方：接口地址 https://api.deepseek.com，模型 deepseek-flash；OpenAI 兼容端点填到
           /v1 为止即可；本地 Ollama 填 http://127.0.0.1:11434/v1（Key 可留空，模型如 qwen2.5:7b）。
           Key 用 Windows DPAPI 加密后保存在本机设置文件里。
         </p>

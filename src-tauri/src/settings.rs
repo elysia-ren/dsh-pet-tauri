@@ -64,7 +64,7 @@ impl Default for Settings {
     fn default() -> Self {
         Self {
             base_url: "https://api.deepseek.com".into(),
-            model: "deepseek-chat".into(),
+            model: "deepseek-flash".into(),
             temperature: 1.0,
             pet_name: "蓝毛小女仆".into(),
             pet_size: 462.0,
@@ -329,9 +329,9 @@ pub fn import_dsh(settings: &mut Settings) -> bool {
             settings.whisper_interval_sec = v.max(30);
         }
     }
-    // DSH 里的 model 名是它的别名（如 deepseek-flash），直连 API 时统一换成官方模型名
+    // DSH 里的模型别名与官方直连模型的对应（当前官方聊天模型是 deepseek-flash）
     settings.base_url = "https://api.deepseek.com".into();
-    settings.model = "deepseek-chat".into();
+    settings.model = "deepseek-flash".into();
     true
 }
 

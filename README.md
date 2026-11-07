@@ -8,6 +8,8 @@
 > - 原项目协议：MIT
 > - 界面字体：站酷快乐体 ZCOOL KuaiLe（SIL OFL 1.1）
 
+本项目适合想体验**大肥鱼桌宠**，但不想在后台持续开 DSH 的人。
+
 ## 下载
 
 - **Releases：** https://github.com/elysia-ren/dsh-pet-tauri/releases
